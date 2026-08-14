@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Royal Corner & Royal Corner Travels | Ajmer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#0B192C',
+                            light: '#1E3E62',
+                            dark: '#050c17',
+                        },
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            hover: '#E5A00D',
+                            light: '#F3E5AB',
+                            glow: 'rgba(212, 175, 55, 0.4)'
+                        },
+                        cream: '#F4F0EA'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Cursor Follower */
+        .cursor-glow {
+            pointer-events: none;
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+            z-index: 9999;
+        }
+
+        /* Gold Glow Hover Effect */
+        .gold-glow {
+            transition: all 0.3s ease-in-out;
+        }
+        .gold-glow:hover {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+            border-color: #D4AF37;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .glass-dark {
+            background: rgba(11, 25, 44, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Image Zoom Effect */
+        .img-zoom {
+            overflow: hidden;
+        }
+        .img-zoom img {
+            transition: transform 0.5s ease;
+        }
+        .img-zoom:hover img {
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body class="bg-cream text-navy font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-navy">
+
+    <!-- Custom Cursor Glow -->
+    <div class="cursor-glow hidden md:block" id="cursor-glow"></div>
+
+    <!-- Floating WhatsApp CTA -->
+    <a href="https://wa.me/919116515534?text=Hello%20Raja%20Ji,%20I%20want%20to%20inquire%20about%20room%20availability%20at%20Hotel%20Royal%20Corner." 
+       target="_blank" 
+       aria-label="Chat on WhatsApp"
+       class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white p-4 rounded-full shadow-2xl flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110 group">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out text-sm font-semibold pl-0 group-hover:pl-2">Book via WhatsApp</span>
+    </a>
+
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-navy/95 backdrop-blur-md border-b border-gold/20 text-white transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-navy transition-all duration-300">
+                        <i class="fa-solid fa-crown text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl font-bold tracking-wider block text-gold">HOTEL ROYAL CORNER</span>
+                        <span class="text-[10px] tracking-widest text-slate-300 uppercase block -mt-1">& Royal Corner Travels</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#home" class="hover:text-gold transition-colors">Home</a>
+                    <a href="#rooms" class="hover:text-gold transition-colors">Rooms</a>
+                    <a href="#sightseeing" class="hover:text-gold transition-colors">Sightseeing</a>
+                    <a href="#transport" class="hover:text-gold transition-colors">Bus & Taxi</a>
+                    <a href="#location" class="hover:text-gold transition-colors">Location</a>
+                    <a href="#contact" class="hover:text-gold transition-colors">Contact</a>
+                </nav>
+
+                <!-- Header CTA Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://wa.me/919116515534?text=Hi%20Raja%20Ji,%20I%20want%20to%20book%20a%20room." 
+                       target="_blank" 
+                       class="bg-gold hover:bg-gold-hover text-navy font-bold px-5 py-2.5 rounded-md shadow-md transition-all duration-300 hover:shadow-gold/50 hover:shadow-lg flex items-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Book Now</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-gold focus:outline-none">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-dark border-b border-gold/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block text-gray-200 hover:text-gold py-2 border-b border-gray-800">Home</a>
+            <a href="#rooms" class="mobile-link block text-gray-200 hover:text-gold py-2 border-b border-gray-800">Rooms</a>
+            <a href="#sightseeing" class="mobile-link block text-gray-200 hover:text-gold py-2 border-b border-gray-800">Sightseeing</a>
+            <a href="#transport" class="mobile-link block text-gray-200 hover:text-gold py-2 border-b border-gray-800">Bus & Taxi</a>
+            <a href="#location" class="mobile-link block text-gray-200 hover:text-gold py-2 border-b border-gray-800">Location</a>
+            <a href="#contact" class="mobile-link block text-gray-200 hover:text-gold py-2">Contact</a>
+            <a href="https://wa.me/919116515534" target="_blank" class="w-full bg-gold text-navy font-bold py-3 rounded-md flex items-center justify-center space-x-2 mt-4">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Direct WhatsApp Booking</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-[90vh] bg-navy text-white flex items-center overflow-hidden py-16 lg:py-0">
+        <!-- Background Overlay Image -->
+        <div class="absolute inset-0 z-0 opacity-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-transparent z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-8" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-star text-[10px]"></i>
+                        <span>3-Star Comfort Experience in Ajmer</span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+                        Experience <span class="text-gold italic">Royal Comfort</span> in the Heart of Ajmer
+                    </h1>
+
+                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl font-light">
+                        Exceptionally clean, hygienic, and affordable 3-star quality stay located near Dargah Sharif and Kadakka Chowk. Enjoy seamless room stays alongside full Rajasthan sight-seeing & luxury travel services.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="https://wa.me/919116515534?text=Hello%20Raja%20Ji,%20I%20want%20to%20reserve%20a%20room%20at%20Hotel%20Royal%20Corner." 
+                           target="_blank" 
+                           class="bg-gold hover:bg-gold-hover text-navy font-bold px-8 py-4 rounded-md shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-3 text-base">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Book Directly via WhatsApp</span>
+                        </a>
+                        <a href="#sightseeing" 
+                           class="border border-gold/50 hover:bg-gold/10 text-gold font-semibold px-8 py-4 rounded-md transition-all duration-300 flex items-center justify-center space-x-2 text-base">
+                            <i class="fa-solid fa-compass"></i>
+                            <span>Explore Tour Packages</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="pt-8 border-t border-gray-800 grid grid-cols-3 gap-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-shield-halved text-gold text-2xl"></i>
+                            <span class="text-xs sm:text-sm font-medium text-gray-300">100% Clean & Hygienic</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-location-dot text-gold text-2xl"></i>
+                            <span class="text-xs sm:text-sm font-medium text-gray-300">Prime Location</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-piggy-bank text-gold text-2xl"></i>
+                            <span class="text-xs sm:text-sm font-medium text-gray-300">Zero Middleman Fee</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Feature Card -->
+                <div class="lg:col-span-5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="glass-dark p-6 rounded-2xl shadow-2xl relative border border-gold/30 gold-glow">
+                        <div class="relative h-64 rounded-xl overflow-hidden mb-6 img-zoom">
+                            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80" alt="Hotel Royal Corner Room" class="w-full h-full object-cover">
+                            <div class="absolute top-3 right-3 bg-navy/80 text-gold text-xs font-bold px-3 py-1 rounded-full border border-gold/30">
+                                Best Value Stay
+                            </div>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-gold mb-2">Welcome to Hotel Royal Corner</h3>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Sardar Dabbe Wali Gali, Nahar Mohalla, Kadakka Chowk, Ajmer.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-400 border-t border-gray-800 pt-4">
+                            <span><i class="fa-solid fa-phone text-gold mr-1"></i> +91 9116515534</span>
+                            <span><i class="fa-solid fa-user text-gold mr-1"></i> Host: Raja</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms & Amenities Section -->
+    <section id="rooms" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+            <span class="text-gold font-semibold tracking-widest uppercase text-xs">Comfort & Elegance</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy mt-2">Our Luxurious & Clean Rooms</h2>
+            <div class="w-20 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-600 mt-4">We prioritize spotlessly clean rooms, pristine linens, and modern amenities to ensure your stay feels like home.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Room Card 1 -->
+            <div class="glass-card rounded-2xl overflow-hidden shadow-lg transition-all duration-300 gold-glow flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                <div>
+                    <div class="relative h-56 img-zoom">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Deluxe Room" class="w-full h-full object-cover">
+                        <span class="absolute bottom-3 left-3 bg-navy text-gold text-xs font-semibold px-3 py-1 rounded-md">Deluxe AC Room</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-navy mb-2">Deluxe Double Room</h3>
+                        <p class="text-gray-600 text-sm mb-4">Perfect for couples and solo travelers looking for high hygiene and modern air conditioning.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-navy/5 text-navy px-2.5 py-1 rounded-md font-medium"><i class="fa-solid fa-snowflake text-gold mr-1"></i> AC</span>
+                            <span class="text-xs bg-navy/5 text-navy px-2.5 py-1 rounded-md font-medium"><i class="fa-solid fa-wifi text-gold mr-1"></i> Free Wi-Fi</span>
+                            <span class="text-xs bg-navy/5 text-navy px-2.5 py-1 rounded-md font-medium"><i class="fa-solid fa-shower text-gold mr-1"></i> Hot Water</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="https://wa.me/919116515534?text=I%20am%20interested%20in%20booking%20the%20Deluxe%20Double%20Room." target="_blank" class="w-full border border-navy text-navy hover:bg-navy hover:text-gold transition-all duration-300 font-semibold py-2.5 rounded-md flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>Check Tariff & Book</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Room Card 2 -->
+            <div class="glass-card rounded-2xl overflow-hidden shadow-lg transition-all duration-300 gold-glow flex flex-col justify-between border-2 border-gold/40 relative" data-aos="fade-up" data-aos-delay="200">
+                <div class="absolute top-3 right-3 z-10 bg-gold text-navy font-bold text-[10px] uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                    Most Popular
+                </div>
+                <div>
+                    <div class="relative h-56 img-zoom">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" alt="Super Deluxe Room" class="w-full h-full object-cover">
+                        <span class="absolute bottom-3 left-3 bg-navy text-gold text-xs font-semibold px-3 py-1 rounded-md">Super Deluxe Room</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-navy mb-2">Super Deluxe Royal Room</h3>
+                        <p class="text-gray-600 text-sm mb-4">Spacious room equipped with premium bed, television, clean washroom, and prompt room service.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-navy/5 text-navy px-2.5 py-1 rounded-md font-medium"><i class="fa-solid fa-snowflake text-gold mr-1"></i> AC</span>
+                            <span class="text-xs bg-navy/5 text-navy px-2.5 py-1 rounded-md font-medium"><i class="fa-solid fa-tv text-gold mr-1"></i> LED TV</span>
+                            <span class="text-xs bg-navy/5 text-navy px-2.5 py-1 rounded-md font-medium"><i class="fa-solid fa-pump-soap text-gold mr-1"></i> Clean Linen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="https://wa.me/919116515534?text=I%20am%20interested%20in%20booking%20the%20Super%20Deluxe%20Royal%20Room." target="_blank" class="w-full bg-navy text-gold hover:bg-gold hover:text-navy transition-all duration-300 font-semibold py-2.5 rounded-md flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>Check Tariff & Book</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Room Card 3 -->
+            <div class="glass-card rounded-2xl overflow-hidden shadow-lg transition-all duration-300 gold-glow flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                <div>
+                    <div class="relative h-56 img-zoom">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Family Suite" class="w-full h-full object-cover">
+                        <span class="absolute bottom-3 left-3 bg-navy text-gold text-xs font-semibold px-3 py-1 rounded-md">Family Suite</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-navy mb-2">Royal Family Suite</h3>
+                        <p class="text-gray-600 text-sm mb-4">Ideal for large families traveling for pilgrimage or sightseeing. Holds extra bedding setup easily.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-navy/5 text-navy px-2.5 py-1 rounded-md font-medium"><i class="fa-solid fa-users text-gold mr-1"></i> 4-6 Guests</span>
+                            <span class="text-xs bg-navy/5 text-navy px-2.5 py-1 rounded-md font-medium"><i class="fa-solid fa-snowflake text-gold mr-1"></i> AC</span>
+                            <span class="text-xs bg-navy/5 text-navy px-2.5 py-1 rounded-md font-medium"><i class="fa-solid fa-concierge-bell text-gold mr-1"></i> 24/7 Service</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="https://wa.me/919116515534?text=I%20am%20interested%20in%20booking%20the%20Royal%20Family%20Suite." target="_blank" class="w-full border border-navy text-navy hover:bg-navy hover:text-gold transition-all duration-300 font-semibold py-2.5 rounded-md flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>Check Tariff & Book</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sightseeing & Local Tours Section (Royal Corner Travels) -->
+    <section id="sightseeing" class="py-24 bg-navy text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-gold font-semibold tracking-widest uppercase text-xs">Royal Corner Travels</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-2">Explore Sightseeing Packages</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+                <p class="text-gray-300 mt-4">We organize customized local tour packages in comfortable taxis and luxury buses straight from the hotel doorstep.</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex justify-center mb-12" data-aos="fade-up">
+                <div class="inline-flex p-1 bg-navy-light rounded-xl border border-gold/30">
+                    <button id="btn-ajmer" onclick="switchTab('ajmer')" class="px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 bg-gold text-navy shadow-md">
+                        <i class="fa-solid fa-kaaba mr-2"></i> Ajmer & Pushkar Side Seen
+                    </button>
+                    <button id="btn-jaipur" onclick="switchTab('jaipur')" class="px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 text-gray-300 hover:text-gold">
+                        <i class="fa-solid fa-landmark mr-2"></i> Jaipur Side Seen
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ajmer Grid -->
+            <div id="tab-ajmer" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Attractions from Card -->
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-mosque"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Dargah Sharif</h4>
+                        <p class="text-xs text-gray-400">World famous Sufi Shrine</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-fort-awesome"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Taragarh Fort</h4>
+                        <p class="text-xs text-gray-400">Historic Hilltop Fort</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-water"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Anasagar Daulat Bagh</h4>
+                        <p class="text-xs text-gray-400">Scenic Lake & Mughal Garden</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-shield-cat"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Akbar Fort</h4>
+                        <p class="text-xs text-gray-400">Museum & Royal Heritage</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-archway"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Adhai Din Ka Jhopra</h4>
+                        <p class="text-xs text-gray-400">Ancient Indo-Islamic Monument</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-om"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Sai Baba Temple</h4>
+                        <p class="text-xs text-gray-400">Peaceful Pilgrimage Site</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-vihara"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Golden Temple (Nasiya Ji)</h4>
+                        <p class="text-xs text-gray-400">Famous Red Temple Architecture</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-hands-praying"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">The Brahma Temple</h4>
+                        <p class="text-xs text-gray-400">Pushkar's Sacred Shrine</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-sun"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Holy Pushkar Lake</h4>
+                        <p class="text-xs text-gray-400">Holy Ghats & Sunset Views</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jaipur Grid (Hidden by default) -->
+            <div id="tab-jaipur" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-film"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Raj Mandir</h4>
+                        <p class="text-xs text-gray-400">Iconic Heritage Cinema</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-place-of-worship"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Birla Mandir</h4>
+                        <p class="text-xs text-gray-400">White Marble Temple</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-tree"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Ramniwas Garden</h4>
+                        <p class="text-xs text-gray-400">Historic Public Park</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-building-columns"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Hawa Mahal</h4>
+                        <p class="text-xs text-gray-400">Palace of Winds</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-compass"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Jantar Mantar</h4>
+                        <p class="text-xs text-gray-400">Astronomical Observatory</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-crown"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">City Palace</h4>
+                        <p class="text-xs text-gray-400">Royal Residence & Museum</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-hippo"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Jaipur Zoo</h4>
+                        <p class="text-xs text-gray-400">Zoological Park</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-hotel"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Jal Mahal</h4>
+                        <p class="text-xs text-gray-400">Water Palace in Man Sagar</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-xl border border-gold/20 flex items-center space-x-4 hover:border-gold transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold text-xl"><i class="fa-solid fa-chess-rook"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Amer Fort</h4>
+                        <p class="text-xs text-gray-400">Majestic Hilltop Palace</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transport & Rentals Section -->
+    <section id="transport" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+            <span class="text-gold font-semibold tracking-widest uppercase text-xs">Transportation Services</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy mt-2">Luxury Bus & Taxi Booking</h2>
+            <div class="w-20 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-600 mt-4">Complete travel solutions including luxury sleeper buses, private cabs, and railway ticket assistance.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gold/20 gold-glow text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 rounded-full bg-navy text-gold flex items-center justify-center text-2xl mx-auto mb-6">
+                    <i class="fa-solid fa-bus"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-navy mb-3">2x1 & 2x2 Luxury Bus Service</h3>
+                <p class="text-gray-600 text-sm mb-6">Super Deluxe A/C & Sleeper bus tickets for all major routes across Rajasthan & neighboring states.</p>
+                <a href="https://wa.me/919116515534?text=I%20want%20to%20inquire%20about%20Bus%20Ticket%20Booking." target="_blank" class="inline-block border border-navy text-navy hover:bg-navy hover:text-gold px-6 py-2.5 rounded-md text-sm font-semibold transition-all">
+                    Inquire Bus Seats
+                </a>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gold/20 gold-glow text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-16 h-16 rounded-full bg-navy text-gold flex items-center justify-center text-2xl mx-auto mb-6">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-navy mb-3">Taxi & Car Rental</h3>
+                <p class="text-gray-600 text-sm mb-6">Innova, Swift, Sumo, Mini Bus, and all luxury cabs available for local and intercity outstation rides.</p>
+                <a href="https://wa.me/919116515534?text=I%20want%20to%20book%20a%20Taxi/Cab." target="_blank" class="inline-block bg-navy text-gold hover:bg-gold hover:text-navy px-6 py-2.5 rounded-md text-sm font-semibold transition-all">
+                    Book Private Taxi
+                </a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gold/20 gold-glow text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-16 h-16 rounded-full bg-navy text-gold flex items-center justify-center text-2xl mx-auto mb-6">
+                    <i class="fa-solid fa-train"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-navy mb-3">Railway Ticket Booking</h3>
+                <p class="text-gray-600 text-sm mb-6">Fast and reliable assistance for train reservation and journey ticket bookings for guests.</p>
+                <a href="https://wa.me/919116515534?text=I%20need%20help%20with%20Railway%20Ticket%20Booking." target="_blank" class="inline-block border border-navy text-navy hover:bg-navy hover:text-gold px-6 py-2.5 rounded-md text-sm font-semibold transition-all">
+                    Train Inquiry
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Directions Section -->
+    <section id="location" class="py-24 bg-navy text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6" data-aos="fade-right">
+                    <span class="text-gold font-semibold tracking-widest uppercase text-xs">Easy Navigation</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Never Get Lost – Direct GPS Route</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        We are situated right in Kadakka Chowk, making it extremely easy to reach Dargah Sharif and local markets. Follow the GPS route or call host Raja directly for easy pickup assistance!
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-navy-light border border-gold/20">
+                            <i class="fa-solid fa-location-dot text-gold text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Hotel Address</h4>
+                                <p class="text-xs text-gray-300">Sardar Dabbe Wali Gali, Nahar Mohalla, Kadakka Chowk, Ajmer (Raj.) - 305001</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-navy-light border border-gold/20">
+                            <i class="fa-solid fa-route text-gold text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">From Railway Station / Bus Stand</h4>
+                                <p class="text-xs text-gray-300">Just 5-10 mins auto ride to Kadakka Chowk. Ask auto drivers for Nahar Mohalla entry.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.google.com/?q=Kadakka+Chowk+Ajmer" target="_blank" class="inline-flex items-center space-x-2 bg-gold text-navy font-bold px-6 py-3 rounded-md hover:bg-gold-hover transition-all">
+                        <i class="fa-solid fa-diamond-turn-right"></i>
+                        <span>Open Direct Google Maps Navigation</span>
+                    </a>
+                </div>
+
+                <!-- Embedded Google Map -->
+                <div class="lg:col-span-7 h-[400px] rounded-2xl overflow-hidden shadow-2xl border-2 border-gold/30" data-aos="fade-left">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3572.034509123!2d74.625!3d26.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be71350000001%3A0x123456789abcdef!2sAjmer%2C%20Rajasthan%20305001!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Direct Booking Form Section -->
+    <section id="contact" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-12">
+            <!-- Contact Details -->
+            <div class="lg:col-span-5 space-y-8" data-aos="fade-right">
+                <div>
+                    <span class="text-gold font-semibold tracking-widest uppercase text-xs">Direct Support</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy mt-2">Get in Touch with Us</h2>
+                    <p class="text-gray-600 text-sm mt-3">Avoid agent commissions! Speak directly to the hotel management for room reservations and travel planning.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-navy text-gold flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-500 uppercase tracking-wider block">Call Host (Raja)</span>
+                            <a href="tel:+919116515534" class="font-bold text-navy hover:text-gold text-lg transition-colors">+91 9116515534</a>
+                            <span class="text-gray-400 mx-2">/</span>
+                            <a href="tel:+919079391183" class="font-bold text-navy hover:text-gold text-lg transition-colors">+91 9079391183</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-navy text-gold flex items-center justify-center text-xl">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-500 uppercase tracking-wider block">WhatsApp Direct</span>
+                            <a href="https://wa.me/919116515534" target="_blank" class="font-bold text-navy hover:text-gold text-lg transition-colors">+91 9116515534</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-navy text-gold flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-500 uppercase tracking-wider block">Address</span>
+                            <p class="font-semibold text-navy text-sm">Sardar Dabbe Wali Gali, Nahar Mohalla, Kadakka Chowk, Ajmer (Raj.) - 305001</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="lg:col-span-7 bg-white p-8 rounded-2xl shadow-xl border border-gold/30 gold-glow" data-aos="fade-left">
+                <h3 class="font-serif text-2xl font-bold text-navy mb-2">Quick Reservation Request</h3>
+                <p class="text-xs text-gray-500 mb-6">Fill in details below to send an instant pre-filled message directly to hotel WhatsApp!</p>
+
+                <form id="whatsapp-booking-form" class="space-y-4">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-navy uppercase mb-1">Your Name</label>
+                            <input type="text" id="form-name" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gold focus:outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-navy uppercase mb-1">Phone Number</label>
+                            <input type="tel" id="form-phone" required placeholder="e.g. 9876543210" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gold focus:outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-navy uppercase mb-1">Check-in Date</label>
+                            <input type="date" id="form-date" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gold focus:outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-navy uppercase mb-1">Room Type</label>
+                            <select id="form-room" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gold focus:outline-none text-sm">
+                                <option value="Deluxe AC Room">Deluxe AC Room</option>
+                                <option value="Super Deluxe Royal Room">Super Deluxe Royal Room</option>
+                                <option value="Royal Family Suite">Royal Family Suite</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-navy uppercase mb-1">Need Sightseeing/Taxi Service?</label>
+                        <select id="form-travel" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gold focus:outline-none text-sm">
+                            <option value="Yes - Ajmer & Pushkar Tour">Yes - Ajmer & Pushkar Tour</option>
+                            <option value="Yes - Jaipur Tour">Yes - Jaipur Tour</option>
+                            <option value="Yes - Taxi / Bus Rental">Yes - Taxi / Bus Rental</option>
+                            <option value="No - Room Stay Only">No - Room Stay Only</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-navy uppercase mb-1">Special Message / Inquiry</label>
+                        <textarea id="form-message" rows="3" placeholder="Any specific requirements or guest count..." class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gold focus:outline-none text-sm"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gold hover:bg-gold-hover text-navy font-bold py-3.5 rounded-lg transition-all duration-300 shadow-md flex items-center justify-center space-x-2 text-base">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>Send Booking Request via WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-dark text-white border-t border-gold/20 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-8 border-b border-gray-800">
+                <div>
+                    <span class="font-serif text-lg font-bold text-gold block">HOTEL ROYAL CORNER</span>
+                    <span class="text-xs text-gray-400 block mt-1">Comfortable Stay & Travels in Ajmer</span>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-gold uppercase tracking-wider mb-3">Quick Links</h4>
+                    <ul class="space-y-1.5 text-xs text-gray-300">
+                        <li><a href="#home" class="hover:text-gold">Home</a></li>
+                        <li><a href="#rooms" class="hover:text-gold">Rooms</a></li>
+                        <li><a href="#sightseeing" class="hover:text-gold">Sightseeing Packages</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-gold uppercase tracking-wider mb-3">Services</h4>
+                    <ul class="space-y-1.5 text-xs text-gray-300">
+                        <li>Luxury Bus Tickets</li>
+                        <li>Taxi & Cab Rentals</li>
+                        <li>Railway Reservations</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-gold uppercase tracking-wider mb-3">Contact</h4>
+                    <p class="text-xs text-gray-300">Raja: +91 9116515534</p>
+                    <p class="text-xs text-gray-300 mt-1">Sardar Dabbe Wali Gali, Ajmer</p>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400">
+                <p>© 2026 Hotel Royal Corner & Travels. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Designed & Developed for Direct Guest Conversion</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS Scroll Animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-in-out'
+        });
+
+        // Custom Cursor Glow Follower
+        const cursorGlow = id => document.getElementById(id);
+        const glow = cursorGlow('cursor-glow');
+        
+        document.addEventListener('mousemove', (e) => {
+            if (glow) {
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Sightseeing Tab Switching Function
+        function switchTab(tab) {
+            const ajmerTab = document.getElementById('tab-ajmer');
+            const jaipurTab = document.getElementById('tab-jaipur');
+            const btnAjmer = document.getElementById('btn-ajmer');
+            const btnJaipur = document.getElementById('btn-jaipur');
+
+            if (tab === 'ajmer') {
+                ajmerTab.classList.remove('hidden');
+                jaipurTab.classList.add('hidden');
+                btnAjmer.className = "px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 bg-gold text-navy shadow-md";
+                btnJaipur.className = "px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 text-gray-300 hover:text-gold";
+            } else {
+                jaipurTab.classList.remove('hidden');
+                ajmerTab.classList.add('hidden');
+                btnJaipur.className = "px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 bg-gold text-navy shadow-md";
+                btnAjmer.className = "px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 text-gray-300 hover:text-gold";
+            }
+        }
+
+        // Form Submission to Pre-filled WhatsApp Message
+        document.getElementById('whatsapp-booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('form-name').value;
+            const phone = document.getElementById('form-phone').value;
+            const date = document.getElementById('form-date').value;
+            const room = document.getElementById('form-room').value;
+            const travel = document.getElementById('form-travel').value;
+            const message = document.getElementById('form-message').value;
+
+            const text = `*New Booking Request - Hotel Royal Corner*%0A%0A` +
+                         `*Name:* ${encodeURIComponent(name)}%0A` +
+                         `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                         `*Check-in Date:* ${encodeURIComponent(date)}%0A` +
+                         `*Room Type:* ${encodeURIComponent(room)}%0A` +
+                         `*Travel Service:* ${encodeURIComponent(travel)}%0A` +
+                         `*Message:* ${encodeURIComponent(message || 'None')}`;
+
+            window.open(`https://wa.me/919116515534?text=${text}`, '_blank');
+        });
+    </script>
+</body>
+</html>
